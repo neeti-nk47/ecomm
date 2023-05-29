@@ -22,7 +22,7 @@ const Home = () => {
               <span className="name">DETROIT, MI</span>
               <span className="discription">DTE ENERGY MUSIC THEATRE</span>
               <span>
-                <Button>BUT TICKETS</Button>
+                <Button>BUY TICKETS</Button>
               </span>
             </ListGroup.Item>
 
@@ -31,7 +31,7 @@ const Home = () => {
               <span className="name">TORONTO,ON</span>
               <span className="discription">BUDWEISER STAGE</span>
               <span>
-                <Button>BUT TICKETS</Button>
+                <Button>BUY TICKETS</Button>
               </span>
             </ListGroup.Item>
 
@@ -40,7 +40,7 @@ const Home = () => {
               <span className="name">BRISTOW, VA</span>
               <span className="discription">JIGGY LUBE LIVE</span>
               <span>
-                <Button>BUT TICKETS</Button>
+                <Button>BUY TICKETS</Button>
               </span>
             </ListGroup.Item>
             <ListGroup.Item className="listGroupItem">
@@ -48,7 +48,7 @@ const Home = () => {
               <span className="name">PHOENIX, AZ</span>
               <span className="discription">AK-CHIN PAVILION</span>
               <span>
-                <Button>BUT TICKETS</Button>
+                <Button>BUY TICKETS</Button>
               </span>
             </ListGroup.Item>
             <ListGroup.Item className="listGroupItem">
@@ -56,7 +56,7 @@ const Home = () => {
               <span className="name">LAS VEGAS, NV</span>
               <span className="discription">T-MOBILE ARENA</span>
               <span>
-                <Button>BUT TICKETS</Button>
+                <Button>BUY TICKETS</Button>
               </span>
             </ListGroup.Item>
             <ListGroup.Item className="listGroupItem">
@@ -64,7 +64,7 @@ const Home = () => {
               <span className="name">CONCORD, CA</span>
               <span className="discription">CONCORD PAVILION</span>
               <span>
-                <Button>BUT TICKETS</Button>
+                <Button>BUY TICKETS</Button>
               </span>
             </ListGroup.Item>
           </ListGroup>

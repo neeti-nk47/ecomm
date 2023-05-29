@@ -40,7 +40,7 @@ function Cart() {
             <span>Total</span> <span>${TotalAmount}</span>{" "}
           </div>
           <div>
-            <Button>PURCHESE</Button>
+            <Button>BUY NOW</Button>
           </div>
         </Col>
       </Row>
