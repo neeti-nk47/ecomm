@@ -6,7 +6,7 @@ function Footer() {
   return (
     <div className="footer">
       <div className="brand-name">
-        <h1>Best4U</h1>
+        <h1>The Generics</h1>
       </div>
       <div className="icons">
         <span className="yt">
