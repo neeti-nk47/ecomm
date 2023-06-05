@@ -1,4 +1,7 @@
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
+import CartContext from "../store/cart-context";
+import "./ProductDetail.css";
 
 const productsArr = [
   {
@@ -30,21 +33,32 @@ const productsArr = [
 const ProductDetail = () => {
   const params = useParams();
 
+  const ctx = useContext(CartContext);
+
   function getProductById() {
     return productsArr.find((product) => product.id === params.Id);
   }
 
   const product = getProductById();
 
-  const Title = product.title;
-  const Price = product.price;
-  const ImageLink = product.imageUrl;
+  const ProductInfo = {
+    key: product.id,
+    id: product.id,
+    title: product.title,
+    price: product.price,
+    image: product.imageUrl,
+  };
+
+  const AddItemHandler = (e) => {
+    ctx.addItem({ ...ProductInfo, quantity: 1 });
+  };
 
   return (
-    <div>
-      <h1> {Title} </h1>
-      <img src={ImageLink} alt={product.id} />
-      <h2> {Price} </h2>
+    <div className="container">
+      <h1> {product.title} </h1>
+      <img src={product.imageUrl} alt={product.id} />
+      <h2> {product.price} </h2>
+      <button onClick={AddItemHandler}>Add to cart</button>
     </div>
   );
 };
