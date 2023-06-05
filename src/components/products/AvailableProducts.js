@@ -1,6 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import CartContext from "../../store/cart-context";
+
 import { Link } from "react-router-dom";
+import { Button, Card } from "react-bootstrap";
 import ProductItem from "./ProductItem";
+
 import "./AvailableProducts.css";
 
 const productsArr = [
@@ -33,17 +37,36 @@ const productsArr = [
   },
 ];
 function AvailableProducts() {
+  const ctx = useContext(CartContext);
+
   const producst = productsArr.map((item) => (
-    <Link to={item.id}>
-      <ProductItem
-        key={item.id}
-        id={item.id}
-        title={item.title}
-        price={item.price}
-        image={item.imageUrl}
-      />
-    </Link>
+    <Card className="card">
+      <Link to={item.id}>
+        <ProductItem
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          price={item.price}
+          image={item.imageUrl}
+        />
+      </Link>
+      <Button
+        onClick={(e) => {
+          const ProductInfo = {
+            key: item.id,
+            id: item.id,
+            title: item.title,
+            price: item.price,
+            image: item.imageUrl,
+          };
+          ctx.addItem({ ...ProductInfo, quantity: 1 });
+        }}
+      >
+        Add to cart
+      </Button>
+    </Card>
   ));
+
   return (
     <div className="store">
       <div className="productContainer">{producst}</div>
