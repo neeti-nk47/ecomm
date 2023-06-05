@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import "./AvailableProducts.css";
 const productsArr = [
@@ -32,13 +33,15 @@ const productsArr = [
 ];
 function AvailableProducts() {
   const producst = productsArr.map((item) => (
-    <ProductItem
-      key={item.id}
-      id={item.id}
-      title={item.title}
-      price={item.price}
-      image={item.imageUrl}
-    />
+    <Link to={item.id}>
+      <ProductItem
+        key={item.id}
+        id={item.id}
+        title={item.title}
+        price={item.price}
+        image={item.imageUrl}
+      />
+    </Link>
   ));
   return (
     <div className="store">

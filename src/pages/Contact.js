@@ -12,18 +12,13 @@ const Contact = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-
-    let details = {
-      name: formData.name,
-      email: formData.email,
-      phone: formData.phone,
-    };
+    //console.log(formData);
 
     const response = await fetch(
       "https://ecomm-af551-default-rtdb.asia-southeast1.firebasedatabase.app/contact.json",
       {
         method: "POST",
-        body: JSON.stringify(details),
+        body: JSON.stringify(formData),
       }
     );
     const data = await response.json();
@@ -33,7 +28,7 @@ const Contact = () => {
   return (
     <div className="container mt-5 mb-5">
       <div className="card box">
-        <h3 className="text-center">Contact Us</h3>
+        <h3 className="text-center mt-3">Contact Us</h3>
 
         <form
           className="form mb-3 card-body"

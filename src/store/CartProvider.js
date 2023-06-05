@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import { act } from "react-dom/test-utils";
 import CartContext from "./cart-context";
 const defaultCartState = {
   items: [],
@@ -70,7 +69,7 @@ const CartProvider = (props) => {
     addItem: addItemToCartHandler,
     removeItem: removeItemFormCartHandler,
   };
-  console.log("in provieder", cartContext.items);
+  console.log("in provider", cartContext.items);
   return (
     <CartContext.Provider value={cartContext}>
       {props.children}
