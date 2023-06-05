@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ProductItem from "./ProductItem";
 import "./AvailableProducts.css";
+
 const productsArr = [
   {
     id: "m1",
