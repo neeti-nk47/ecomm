@@ -5,9 +5,12 @@ import { NavLink } from "react-router-dom";
 import Cart from "../cart/Cart";
 import { FaShoppingCart } from "react-icons/fa";
 import CartContext from "../../store/cart-context";
+import AuthContext from "../../store/auth-context";
 
 function Header() {
   const cartCtx = useContext(CartContext);
+  const authCtx = useContext(AuthContext);
+
   const numberOfCartItem = cartCtx.items.reduce((curNumber, item) => {
     return curNumber + item.quantity;
   }, 0);
@@ -18,9 +21,10 @@ function Header() {
           <Navbar.Brand>
             <NavLink to={"/"}>The Generics</NavLink>
           </Navbar.Brand>
-          <NavLink to={"store"}>Store</NavLink>
+          {authCtx.isLoggedIn && <NavLink to={"store"}>Store</NavLink>}
+          {!authCtx.isLoggedIn && <NavLink to={"login"}>Store</NavLink>}
           <NavLink to={"about"}>About</NavLink>
-          <NavLink to={"login"}>Login</NavLink>
+          {!authCtx.isLoggedIn && <NavLink to={"login"}>Login</NavLink>}
           <NavLink to={"contact"}>Contact Us</NavLink>
           <Nav>
             <Dropdown align="end">
