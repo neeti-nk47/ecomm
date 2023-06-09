@@ -55,7 +55,7 @@ const ProductDetail = () => {
 
   return (
     <>
-      <div className="container row box mt-4 p-5 ">
+      <div className="container row boxed mt-4 p-5 ">
         <div className="col-5">
           <img src={product.imageUrl} alt={product.id} className="card zoom" />
         </div>

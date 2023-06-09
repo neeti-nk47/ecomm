@@ -12,7 +12,7 @@ function Header() {
     return curNumber + item.quantity;
   }, 0);
   return (
-    <div>
+    <div className="header">
       <Navbar bg="dark" variant="dark" style={{ height: "80px" }}>
         <Container>
           <Navbar.Brand>
@@ -20,6 +20,7 @@ function Header() {
           </Navbar.Brand>
           <NavLink to={"store"}>Store</NavLink>
           <NavLink to={"about"}>About</NavLink>
+          <NavLink to={"login"}>Login</NavLink>
           <NavLink to={"contact"}>Contact Us</NavLink>
           <Nav>
             <Dropdown align="end">

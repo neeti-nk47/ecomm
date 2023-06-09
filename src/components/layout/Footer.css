@@ -7,9 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
-
-  margin-left: 17rem;
+  padding: 1rem;  
 }
 .icons {
   display: flex;
@@ -17,5 +15,5 @@
   margin-right: 10rem;
   width: 30%;
   padding: 1rem;
-  justify-content: space-evenly;
+  justify-content: flex-end;
 }
