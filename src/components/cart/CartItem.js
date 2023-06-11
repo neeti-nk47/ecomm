@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { Button } from "react-bootstrap";
 import CartContext from "../../store/cart-context";
 import "./CartItem.css";
+
 function CartItem(props) {
   const ctx = useContext(CartContext);
+
   const removeItemHandler = (id) => {
     ctx.removeItem(id);
   };

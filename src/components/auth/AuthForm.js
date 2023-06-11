@@ -11,12 +11,7 @@ const AuthForm = () => {
 
   const authCtx = useContext(AuthContext);
 
-  const [isLogin, setIsLogin] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const switchAuthModeHandler = () => {
-    setIsLogin((prevState) => !prevState);
-  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -25,14 +20,8 @@ const AuthForm = () => {
     const enteredPassword = passwordInputRef.current.value;
 
     setIsLoading(true);
-    let url;
-    if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCW-VrFmh7dYoU7ptSpirixoA6CkYZq1Ss";
-    } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCW-VrFmh7dYoU7ptSpirixoA6CkYZq1Ss";
-    }
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCW-VrFmh7dYoU7ptSpirixoA6CkYZq1Ss";
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
@@ -58,7 +47,7 @@ const AuthForm = () => {
       })
       .then((data) => {
         console.log("Success");
-        authCtx.login(data.idToken);
+        authCtx.login(data.idToken, enteredEmail);
         history("/store", { replace: true });
       })
       .catch((err) => {
@@ -68,7 +57,7 @@ const AuthForm = () => {
 
   return (
     <section className={classes.auth}>
-      <h1>{isLogin ? "Login" : "Sign Up"}</h1>
+      <h1>User Login</h1>
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
@@ -84,17 +73,8 @@ const AuthForm = () => {
           />
         </div>
         <div className={classes.actions}>
-          {!isLoading && (
-            <button>{isLogin ? "Login" : "Create Account"}</button>
-          )}
+          <button>Login</button>
           {isLoading && <p>Sending request...</p>}
-          <button
-            type="button"
-            className={classes.toggle}
-            onClick={switchAuthModeHandler}
-          >
-            {isLogin ? "Create new account" : "Login with existing account"}
-          </button>
         </div>
       </form>
     </section>

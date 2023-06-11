@@ -40,10 +40,9 @@ function AvailableProducts() {
   const ctx = useContext(CartContext);
 
   const producst = productsArr.map((item) => (
-    <Card className="card">
+    <Card className="card" key={item.id}>
       <Link to={item.id}>
         <ProductItem
-          key={item.id}
           id={item.id}
           title={item.title}
           price={item.price}
@@ -53,7 +52,6 @@ function AvailableProducts() {
       <Button
         onClick={(e) => {
           const ProductInfo = {
-            key: item.id,
             id: item.id,
             title: item.title,
             price: item.price,

@@ -23,8 +23,6 @@ function Cart() {
       </Row>
       <Row>
         <Col className="text-center">
-          {/* There is no item in this cart click <Link to={"store"}>here</Link> to
-          shope */}
           <Table responsive="sm">
             <thead>
               <tr className="th">
