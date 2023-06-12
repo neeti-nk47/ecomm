@@ -18,9 +18,10 @@ function App() {
 
   const fetchData = async (email) => {
     const Response = await fetch(
-      `https://crudcrud.com/api/4ce4fa184d494dffb11ec8cd7fa5062a/${email}`
+      `https://crudcrud.com/api/9c5cc7a312d04307a3632a96d2a83d2f/${email}`
     );
-    const data = await Response.json();
+    const data = await Response.json(); // console.log(data);
+
     const extractedData = data.map((data) => data.items);
 
     extractedData.forEach((currentItem) => {
