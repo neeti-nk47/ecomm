@@ -1,6 +1,5 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer } from "react";
 import CartContext from "./cart-context";
-import AuthContext from "./auth-context";
 
 const defaultCartState = {
   items: [],
@@ -59,32 +58,13 @@ const cartReducer = (state, action) => {
 };
 
 const CartProvider = (props) => {
-  const authCtx = useContext(AuthContext);
-
   const [cartState, dispachCartAction] = useReducer(
     cartReducer,
     defaultCartState
   );
 
-  let userEmail = authCtx.email.replace("@", "").replace(".", "");
-
-  const addItemToCartHandler = async (item) => {
+  const addItemToCartHandler = (item) => {
     dispachCartAction({ type: "ADD", item: item });
-    console.log(item, cartState.totalAmount);
-    console.log(userEmail);
-    const Response = await fetch(
-      `https://crudcrud.com/api/987f59d1e4fc44759a886da631fe2c62/${userEmail}`,
-      {
-        method: "POST",
-        body: JSON.stringify({
-          items: item,
-          totalAmount: cartState.totalAmount,
-        }),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
-    const data = await Response.json();
-    console.log(data);
   };
 
   const removeItemFormCartHandler = (id) => {

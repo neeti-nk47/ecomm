@@ -10,9 +10,35 @@ import Contact from "./pages/Contact";
 import ProductDetail from "./pages/ProductDetail";
 import AuthForm from "./components/auth/AuthForm";
 import AuthContext from "./store/auth-context";
+import CartContext from "./store/cart-context";
 
 function App() {
   const authCtx = useContext(AuthContext);
+  const cartCtx = useContext(CartContext);
+
+  const fetchData = async (email) => {
+    const Response = await fetch(
+      `https://crudcrud.com/api/4ce4fa184d494dffb11ec8cd7fa5062a/${email}`
+    );
+    const data = await Response.json();
+    const extractedData = data.map((data) => data.items);
+
+    extractedData.forEach((currentItem) => {
+      const ProductInfo = {
+        id: currentItem.id,
+        title: currentItem.title,
+        price: currentItem.price,
+        image: currentItem.imageUrl,
+      };
+
+      cartCtx.addItem({ ...ProductInfo, quantity: 1 });
+    });
+  };
+
+  if (authCtx.isLoggedIn && cartCtx.items.length === 0) {
+    let userEmail = authCtx.email.replace("@", "").replace(".", "");
+    fetchData(userEmail);
+  }
 
   return (
     <Routes>

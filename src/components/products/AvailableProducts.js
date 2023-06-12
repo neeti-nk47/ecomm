@@ -36,6 +36,26 @@ const productsArr = [
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
   },
 ];
+
+const postRequest = async (item) => {
+  let userEmail = localStorage
+    .getItem("Email")
+    .replace("@", "")
+    .replace(".", "");
+  const Response = await fetch(
+    `https://crudcrud.com/api/4ce4fa184d494dffb11ec8cd7fa5062a/${userEmail}`,
+    {
+      method: "POST",
+      body: JSON.stringify({
+        items: item,
+      }),
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+  const data = await Response.json();
+  console.log(data.items);
+};
+
 function AvailableProducts() {
   const ctx = useContext(CartContext);
 
@@ -51,6 +71,7 @@ function AvailableProducts() {
       </Link>
       <Button
         onClick={(e) => {
+          postRequest(item);
           const ProductInfo = {
             id: item.id,
             title: item.title,
